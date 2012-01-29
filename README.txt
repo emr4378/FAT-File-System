@@ -25,6 +25,8 @@ The shell is started in the following manner:
 
 where filesystem is the name of the file system to be used. If the file system does not exist, the shell will prompt the user to input parameters to set up the initial file system.
 
+When a file system is created, the mount point is "/" in the real file system. However, the actual file system file will be located in the same directory "./os1shell" is run from. Additionally, relative paths update accordingly; "./" refers to the fake file system, while "../" refers to "/" in the real file system.
+
 The shell supports the following commands:
 ls
 touch
@@ -37,3 +39,12 @@ cat
 If a real Linux command is enterred and not supported by the shell, the shell simply forwards the command to the terminal and executes it normally. Therefore, the shell maintains full terminal functionality.
 
 Addtionally, files can be moved to and from fake file system to real filesystem regardless of file type using the "cp" and "mv" commands.
+
+To exit the shell, end standard input (Ctrl-D) or end the process (Ctrl-C).
+
+Sample commands:
+cp /home/emr4378/Desktop/a.txt .
+mv /home/emr4378/Desktop/a.txt /Eduardo_FS/a_2.txt
+rm ./a.txt
+mv a_2.txt a.txt
+cat a.txt
